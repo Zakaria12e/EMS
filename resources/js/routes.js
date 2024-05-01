@@ -1,8 +1,8 @@
 import Dashboard from './components/Dashboard.vue';
 import CreateEmails from './components/Create-Emails.vue';
 import EmailsHistory from './components/Emails-History.vue';
-import CreateUsers from './components/Create-users.vue';
-import UsersAccs from './components/Users-Accs.vue';
+import CreateReciptients from './components/Create-reciptients.vue';
+import ReciptientsAccs from './components/Reciptients-Accs.vue';
 import Profile from './components/Profile.vue';
 
 export default [
@@ -24,14 +24,14 @@ export default [
         component: EmailsHistory,
     },
     {
-        path: '/admin/create-users',
-        name: 'admin.CreateUsers',
-        component: CreateUsers,
+        path: '/admin/create-reciptients',
+        name: 'admin.reciptients',
+        component: CreateReciptients,
     },
     {
-        path: '/admin/users',
-        name: 'admin.Users',
-        component: UsersAccs,
+        path: '/admin/reciptients',
+        name: 'admin.Reciptients',
+        component: ReciptientsAccs,
     },
     {
         path: '/admin/profile',
