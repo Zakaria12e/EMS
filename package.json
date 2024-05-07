@@ -14,6 +14,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@headlessui/vue": "^1.7.21",
         "@tailwindcss/typography": "^0.5.13",
         "@tiptap/extension-highlight": "^2.3.1",
         "@tiptap/extension-underline": "^2.3.1",
@@ -22,6 +23,7 @@
         "@tiptap/vue-3": "^2.3.1",
         "@vitejs/plugin-vue": "^5.0.4",
         "flowbite": "^2.3.0",
+        "toastr": "^2.1.4",
         "vue-material-design-icons": "^5.3.0",
         "vue-quill-editor": "^3.0.6",
         "vue-router": "^4.3.2",
