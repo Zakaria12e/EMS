@@ -4,7 +4,6 @@ export default {
   content: [
     "./index.html",
     "./resources/views/admin.blade.php",
-
     "./resources/views/auth/Login.blade.php",
     "./resources/js/app.js",
     "./resources/js/components/Dashboard.vue",

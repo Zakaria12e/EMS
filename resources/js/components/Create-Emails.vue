@@ -253,7 +253,7 @@ function handleButtonClick() {
 .container {
   margin-left: auto; /* Move the container to the right */
   margin-right: auto; /* Center the container horizontally */
-  width: 80%; /* Set the width of the container */
+  width: 70%; /* Set the width of the container */
 }
 </style>
 
