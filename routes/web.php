@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DestinataireController;
+use App\Http\Controllers\DepartmentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,3 +20,6 @@ Route::get('/admin/{view?}', [ApplicationController::class, 'admin'])->where('vi
 
 Route::post('/api/create-reception', [DestinataireController::class, 'store']);
 Route::post('/api/check-unique-fields', [DestinataireController::class, 'checkUniqueFields']);
+Route::post('/api/create-departments', [DepartmentController::class, 'store']);
+Route::get('/api/getdepartments', [DepartmentController::class, 'index']);
+

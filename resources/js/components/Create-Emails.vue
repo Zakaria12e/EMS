@@ -51,7 +51,9 @@ function handleButtonClick() {
 
 <template>
 
-
+    <header class="mb-6">
+        <h1 class="text-3xl font-bold"> Créer des Emails</h1>
+    </header>
 <div class="container">
      <form>
         <div class="grid gap-6 mb-6 md:grid-cols-2">

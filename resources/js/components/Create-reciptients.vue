@@ -90,7 +90,9 @@
 
 
 
-
+    <header class="mb-6">
+        <h1 class="text-3xl font-bold">Créer des Destinataires</h1>
+    </header>
 
 
     <div class="flex justify-center">

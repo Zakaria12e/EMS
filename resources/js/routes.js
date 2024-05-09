@@ -4,6 +4,7 @@ import EmailsHistory from './components/Emails-History.vue';
 import CreateReciptients from './components/Create-reciptients.vue';
 import ReciptientsAccs from './components/Reciptients-Accs.vue';
 import Profile from './components/Profile.vue';
+import Departments from './components/Departments.vue';
 
 export default [
 
@@ -37,5 +38,10 @@ export default [
         path: '/admin/profile',
         name: 'admin.Profile',
         component: Profile,
+    },
+    {
+        path: '/admin/departments',
+        name: 'admin.Departments',
+        component: Departments,
     },
 ]
