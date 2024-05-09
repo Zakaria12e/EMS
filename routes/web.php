@@ -23,3 +23,6 @@ Route::post('/api/check-unique-fields', [DestinataireController::class, 'checkUn
 Route::post('/api/create-departments', [DepartmentController::class, 'store']);
 Route::get('/api/getdepartments', [DepartmentController::class, 'index']);
 
+
+Route::get('/api/destinataires', [DestinataireController::class, 'index']);
+

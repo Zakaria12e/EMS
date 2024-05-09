@@ -4,9 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Destinataire;
+use App\Models\Department;
 
 class DestinataireController extends Controller
 {
+
+    public function index()
+    {
+        $destinataires = Destinataire::with('department')->get();
+
+
+        $formattedDestinataires = $destinataires->map(function ($destinataire) {
+            return [
+                'id' => $destinataire->id,
+                'nom_prenom' => $destinataire->nom_dest . ' ' . $destinataire->prenom_dest,
+                'telephone' => $destinataire->telephone_dest,
+                'emails' => $destinataire->first_email . ', ' . $destinataire->second_email,
+                'department' => $destinataire->department->dept_name,
+                'role' => $destinataire->role_id,
+            ];
+        });
+
+        return response()->json($formattedDestinataires);
+    }
     public function store(Request $request)
     {
 

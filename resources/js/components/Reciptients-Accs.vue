@@ -1,10 +1,19 @@
 <script setup>
-import { ref , onMounted} from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
-import { useToastr } from '@/toastr';
 
 const destinataires = ref([]);
 
+const fetchDestinataires = async () => {
+  try {
+    const response = await axios.get('/api/destinataires');
+    destinataires.value = response.data;
+  } catch (error) {
+    console.error('Error fetching destinataires:', error);
+  }
+};
+
+onMounted(fetchDestinataires);
 </script>
 
 
@@ -45,21 +54,21 @@ const destinataires = ref([]);
             </tr>
         </thead>
 
-          <tbody v-if="destinataires.length > 0">
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <tbody>
+            <tr v-for="destinataire in destinataires" :key="destinataire.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
-                <td class="px-6 py-4"></td>
-                <td class="px-6 py-4"></td>
-                <td class="px-6 py-4"></td>
-                <td class="px-6 py-4"></td>
-                <td class="px-6 py-4"></td>
+                <td class="px-6 py-4">{{ destinataire.nom_prenom }}</td>
+                <td class="px-6 py-4">{{ destinataire.telephone }}</td>
+                <td class="px-6 py-4">{{ destinataire.emails }}</td>
+                <td class="px-6 py-4">{{ destinataire.department }}</td>
+                <td class="px-6 py-4">{{ destinataire.role }}</td>
                 <td class="px-6 py-4">
                   <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                   <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:text-red-700 pl-3">Delete</a>
                 </td>
               </tr>
           </tbody>
-          <tbody v-else>
+          <tbody v-if="destinataires.length === 0">
             <tr>
               <td style="padding-top: 40px;"colspan="7" class="px-6 py-4 text-center bg-white">
                 Aucun déstinataire n'est encore disponible.
