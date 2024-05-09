@@ -33,10 +33,10 @@ class DestinataireController extends Controller
         $validatedData = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'structur_id' => 'nullable',
+            'structurId' => 'nullable',
             'phone' => 'required',
-            'role_id' => 'nullable',
-            'department_id' => 'nullable',
+            'roleId' => 'nullable',
+            'departmentId' => 'required',
             'email1' => 'required|email',
             'email2' => 'nullable|email',
         ]);
@@ -48,6 +48,8 @@ class DestinataireController extends Controller
             'telephone_dest' => $validatedData['phone'],
             'first_email' => $validatedData['email1'],
             'second_email' => $validatedData['email2'],
+            'department_id' => $validatedData['departmentId'],
+
 
         ]);
 

@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from 'vue';
+  import { ref , onMounted } from 'vue';
   import axios from 'axios';
   import { useToastr } from '@/toastr';
 
@@ -12,6 +12,20 @@
   const email1 = ref('');
   const email2 = ref('');
   const toastr = useToastr();
+  const departments = ref([]);
+
+const fetchDepartments = async () => {
+  try {
+    const response = await axios.get('/api/getdepartments');
+    departments.value = response.data;
+  } catch (error) {
+    console.error('Error fetching departments:', error);
+  }
+};
+
+
+onMounted(fetchDepartments);
+
 
   const validateForm = () => {
     if (!firstName.value || !lastName.value || !phone.value || !email1.value) {
@@ -62,7 +76,7 @@
         structurId: StructureId.value,
         phone: phone.value,
         roleId: roleId.value,
-        departmentsId: departmentId.value,
+        departmentId: departmentId.value,
         email1: email1.value,
         email2: email2.value,
       });
@@ -121,8 +135,12 @@
                 </div>
                 <div>
                     <label for="departments" class="block mb-2 text-sm font-medium text-gray-900">Département</label>
-                    <input type="text" v-model="departmentId" id="departments" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  />
-                </div>
+                    <select v-model="departmentId"  id="departments" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                      <option value="" disabled selected>Choisir un département</option>
+                      <option v-for="department in departments" :key="department.id" :value="department.id">{{ department.dept_name }}</option>
+                    </select>
+                  </div>
+
             </div>
             <div class="mb-6">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Adresse e-mail 1</label>
