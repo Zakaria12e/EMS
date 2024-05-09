@@ -146,7 +146,7 @@ onMounted(() => {
             </tr>
         </thead>
 
-          <tbody>
+          <tbody v-if="departments.length > 0">
             <tr v-for="department in departments" :key="department.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
                 <td class="px-6 py-4">{{ department.dept_name }}</td>
@@ -157,6 +157,13 @@ onMounted(() => {
                   <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:text-red-700 pl-3">Delete</a>
                 </td>
               </tr>
+          </tbody>
+          <tbody v-else>
+            <tr>
+              <td style="padding-top: 40px;" colspan="4" class="px-6 py-4 text-center bg-white">
+                Aucun département n'est encore disponible.
+              </td>
+            </tr>
           </tbody>
 
     </table>

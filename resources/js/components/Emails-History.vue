@@ -5,7 +5,7 @@
 <template>
 
     <header class="mb-6">
-        <h1 class="text-3xl font-bold"> Mes Emails</h1>
+        <h1 class="text-3xl font-bold"> Liste des Emails</h1>
     </header>
 
 

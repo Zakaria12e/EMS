@@ -42,6 +42,11 @@ const updatePhoto = () => {
 </script>
 
 <template>
+
+    <header class="mb-6">
+        <h1 class="text-3xl font-bold">Profile</h1>
+    </header>
+
   <div class="grid grid-cols-5 gap-8">
     <!-- Personal Information Section -->
     <div class="col-span-5 xl:col-span-3">

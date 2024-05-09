@@ -24,7 +24,8 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue'])
 
-const dateValue = ref([]);
+const dateValueExpedition = ref([]);
+const dateValueLimite = ref([]);
 
 const editor = useEditor({
   content: props.modelValue,
@@ -74,7 +75,7 @@ function handleButtonClick() {
 
   <div>
     <label for="Date-expédition" class="block mb-2 text-sm font-medium text-gray-900">Date d'expédition</label>
-      <vue-tailwind-datepicker  class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg"   v-model="dateValue" as-single />
+      <vue-tailwind-datepicker  class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg"   v-model="dateValueExpedition" as-single />
 </div>
 
 
@@ -85,7 +86,7 @@ function handleButtonClick() {
 
             <div>
                 <label for="Date-limite" class="block mb-2 text-sm font-medium text-gray-900">Date limite</label>
-                <vue-tailwind-datepicker  class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg"   v-model="dateValue" as-single />
+                <vue-tailwind-datepicker  class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg"   v-model="dateValueLimite" as-single />
             </div>
 
 
