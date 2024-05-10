@@ -169,14 +169,12 @@ onMounted(fetchDestinataires);
     <div class="w-full bg-white shadow-xl rounded-lg flex overflow-x-auto custom-scrollbar">
 
         <div class="flex-1 px-2">
-            <div class="h-16 flex items-center">
-                <h4 class="text-lg font-bold">New mail</h4>
-            </div>
+
 
             <div class="cont">
 
 
-                <div class="mb-2">
+                <div class="mb-2 mt-4">
 
                     <button @click="toggleCCI" class="buttons-container text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" id="cciButton">CCI</button>
                   </div>
@@ -312,7 +310,7 @@ onMounted(fetchDestinataires);
 
                 <div class="flex items-center justify-between mt-4">
                     <div class="flex items-center space-x-2">
-                        <button class="bg-blue-500 hover:bg-blue-700 rounded-lg px-12 py-1.5 text-gray-100 hover:shadow-xl transition duration-150">Send</button>
+                        <button class="bg-blue-500 hover:bg-blue-700 rounded-lg px-12 py-1.5 text-gray-100 hover:shadow-xl transition duration-150">Envoyer</button>
                         <button title="Attach Files" @click="handleButtonClick">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 hover:text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>

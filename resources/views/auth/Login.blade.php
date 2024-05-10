@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -11,35 +11,67 @@
 
 <body>
 
-<section class="bg-gray-50">
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        
-        <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
-            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                    Sign in to your account
-                </h1>
-                <form class="space-y-4 md:space-y-6" action="#">
-                    <div>
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
-                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="name@company.com" required="">
-                    </div>
-                    <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
-                        <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
-                    </div>
-                    <div class="flex items-center justify-between">
-
-
-                    </div>
-                    <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
-
-
-                </form>
+    <div class="text-[#333]">
+        <div class="min-h-screen flex fle-col items-center justify-center py-6 px-4">
+            <img src="https://readymadeui.com/bg-effect.svg" class="absolute inset-0 w-full h-full z-[-1]" />
+          <div class="grid md:grid-cols-2 items-center gap-10 max-w-6xl w-full">
+            <div class="max-md:text-center">
+              <h2 class="lg:text-5xl text-4xl font-extrabold lg:leading-[55px]">
+                Connexion Transparente pour un Accès Exclusif
+              </h2>
+              <p class="text-sm mt-6">Immergez-vous dans un parcours de connexion sans tracas avec notre formulaire de connexion intuitivement conçu. Accédez facilement à votre compte.</p>
+              <p class="text-sm mt-10">Vous n'avez pas de compte <a href="{{ route('signup') }}" class="text-blue-600 font-semibold hover:underline ml-1">Inscrivez-vous ici</a></p>
             </div>
+
+            <form class="space-y-6 max-w-md md:ml-auto max-md:mx-auto w-full">
+              <h3 class="text-3xl font-extrabold mb-8 max-md:text-center">
+                Connexion
+              </h3>
+
+              <div class="mt-10">
+                <label class="text-xs block mb-2">E-mail</label>
+                <div class="relative flex items-center">
+                  <input name="email" type="text" required class="w-full bg-transparent rounded-md text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Entrez votre e-mail" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
+                    <defs>
+                      <clipPath id="a" clipPathUnits="userSpaceOnUse">
+                        <path d="M0 512h512V0H0Z" data-original="#000000"></path>
+                      </clipPath>
+                    </defs>
+                    <g clip-path="url(#a)" transform="matrix(1.33 0 0 -1.33 0 682.667)">
+                      <path fill="none" stroke-miterlimit="10" stroke-width="40" d="M452 444H60c-22.091 0-40-17.909-40-40v-39.446l212.127-157.782c14.17-10.54 33.576-10.54 47.746 0L492 364.554V404c0 22.091-17.909 40-40 40Z" data-original="#000000"></path>
+                      <path d="M472 274.9V107.999c0-11.027-8.972-20-20-20H60c-11.028 0-20 8.973-20 20V274.9L0 304.652V107.999c0-33.084 26.916-60 60-60h392c33.084 0 60 26.916 60 60v196.653Z" data-original="#000000"></path>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div class="mt-10">
+                <label class="text-xs block mb-2">Mot de passe</label>
+                <div class="relative flex items-center">
+                  <input name="password" type="password" required class="w-full rounded-md bg-transparent text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Entrez votre mot de passe" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-[18px] h-[18px] absolute right-2 cursor-pointer" viewBox="0 0 128 128">
+                    <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+
+                <div class="text-sm">
+                  <a href="jajvascript:void(0);" class="text-blue-600 hover:text-blue-500">
+                    Mot de passe oublié ?
+                  </a>
+                </div>
+              </div>
+              <div class="!mt-10">
+                <button type="button" class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                  Connexion
+                </button>
+              </div>
+
+            </form>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
