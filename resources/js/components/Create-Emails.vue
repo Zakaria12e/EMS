@@ -69,6 +69,7 @@ const fetchDestinataires = async () => {
     try {
         const response = await axios.get('/api/destinataires');
         destinataires.value = response.data;
+
     } catch (error) {
         console.error('Error fetching destinataires:', error);
     }
@@ -88,10 +89,22 @@ const fetchDestinataireEmail = async () => {
 watch(selectedDestinataire, () => {
     if (selectedDestinataire.value) {
         fetchDestinataireEmail();
+
     } else {
         destinataireEmails.value = '';
     }
 });
+
+const selectedSenderRole = ref('');
+
+  watch(selectedDestinataire, () => {
+    const selectedSender = destinataires.value.find(dest => dest.id === selectedDestinataire.value);
+    if (selectedSender) {
+      selectedSenderRole.value = selectedSender.role;
+    } else {
+      selectedSenderRole.value = '';
+    }
+  });
 
 
 
@@ -138,7 +151,7 @@ onMounted(fetchDestinataires);
 
             <div>
                 <label for="Type-destinataire" class="block mb-2 text-sm font-medium text-gray-900">Type de destinataire</label>
-                <input type="text" id="first_name" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  required />
+                <input type="text" id="role" v-model="selectedSenderRole" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  required />
             </div>
 
             <div>
