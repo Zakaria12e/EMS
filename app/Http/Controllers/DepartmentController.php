@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Department;
+use App\Models\Role;
 
 class DepartmentController extends Controller
 {
@@ -30,11 +31,24 @@ class DepartmentController extends Controller
     public function index()
     {
         try {
-            $departments = Department::all(); 
+            $departments = Department::all();
             return response()->json($departments);
         } catch (\Exception $e) {
             report($e);
             return abort(500, 'Error fetching departments');
         }
     }
+
+    public function getroles()
+    {
+        try {
+            $roles = Role::all();
+            return response()->json($roles);
+        } catch (\Exception $e) {
+            report($e);
+            return abort(500, 'Error fetching roles');
+        }
+    }
+
+
 }
