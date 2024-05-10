@@ -74,4 +74,13 @@ class DestinataireController extends Controller
             'phoneUnique' => $phoneUnique,
         ]);
     }
+
+    public function getEmail($id)
+    {
+        $destinataire = Destinataire::findOrFail($id);
+    return response()->json([
+        'first_email' => $destinataire->first_email,
+        'second_email' => $destinataire->second_email
+    ]);
+    }
 }

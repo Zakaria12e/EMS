@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from "vue";
+import { ref , onMounted , watch} from "vue";
+import axios from 'axios';
 import VueTailwindDatepicker from "vue-tailwind-datepicker";
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
@@ -55,6 +56,46 @@ function toggleCCI() {
   showCCI.value = !showCCI.value;
 }
 
+
+
+const selectedDestinataire = ref('');
+const destinataires = ref([]);
+const destinataireEmails = ref('');
+
+
+
+
+const fetchDestinataires = async () => {
+    try {
+        const response = await axios.get('/api/destinataires');
+        destinataires.value = response.data;
+    } catch (error) {
+        console.error('Error fetching destinataires:', error);
+    }
+};
+
+
+const fetchDestinataireEmail = async () => {
+    try {
+        const response = await axios.get(`/api/getEmaildestinataire/${selectedDestinataire.value}`);
+        destinataireEmails.value = response.data;
+    } catch (error) {
+        console.error('Error fetching destinataire email:', error);
+    }
+};
+
+
+watch(selectedDestinataire, () => {
+    if (selectedDestinataire.value) {
+        fetchDestinataireEmail();
+    } else {
+        destinataireEmails.value = '';
+    }
+});
+
+
+
+onMounted(fetchDestinataires);
 </script>
 
 <template>
@@ -65,18 +106,27 @@ function toggleCCI() {
 <div class="container">
      <form>
         <div class="grid gap-6 mb-6 md:grid-cols-2">
+
             <div>
-                <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900"> Nom de l'expéditeur</label>
-                <input type="text" id="first_name" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                <label for="destinataire" class="block mb-2 text-sm font-medium text-gray-900">Nom de l'expéditeur</label>
+                <select id="destinataire" v-model="selectedDestinataire" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+
+                    <option v-for="destinataire in destinataires" :key="destinataire.id" :value="destinataire.id">{{ destinataire.nom_prenom }}</option>
+                </select>
             </div>
+
             <div>
                 <label for="Organisation" class="block mb-2 text-sm font-medium text-gray-900">Organisation de l'expéditeur</label>
                 <input type="text" id="last_name" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  required />
             </div>
             <div>
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Adresse e-mail</label>
-                <input type="text" id="company" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  required />
+                <select id="email" v-model="selectedEmail" class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                    <option :value=" destinataireEmails.first_email">{{ destinataireEmails.first_email }}</option>
+                    <option :value=" destinataireEmails.second_email">{{ destinataireEmails.second_email }}</option>
+                </select>
             </div>
+
 
 
 
@@ -119,7 +169,10 @@ function toggleCCI() {
                   </div>
                 </div>
                   <div class="input-container">
-                    <input type="text" name="cc" id="cc" class="w-full py-2 px-3 border-b border-gray-300 focus:outline-none focus:ring-0 focus:border-transparent focus:border-b-gray-300 placeholder-gray-400 mt-2" placeholder="CC">
+
+                        <input type="text"  name="cc" id="cc" class="w-full py-2 px-3 border-b border-gray-300 focus:outline-none focus:ring-0 focus:border-transparent focus:border-b-gray-300 placeholder-gray-400 mt-2" placeholder="CC">
+
+
                     <input v-if="showCCI" type="text" name="cci" id="cci" class="w-full py-2 px-3 border-b border-gray-300 focus:outline-none focus:ring-0 focus:border-transparent focus:border-b-gray-300 placeholder-gray-400 mt-2" placeholder="CCI">
                   </div>
                     <div>

@@ -25,4 +25,5 @@ Route::get('/api/getdepartments', [DepartmentController::class, 'index']);
 
 
 Route::get('/api/destinataires', [DestinataireController::class, 'index']);
+Route::get('/api/getEmaildestinataire/{id}', [DestinataireController::class, 'getEmail']);
 
