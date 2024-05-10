@@ -22,8 +22,8 @@
                 <p class="text-sm mt-6">Profitez d'un processus d'inscription fluide et sans effort avec notre formulaire d'inscription intuitivement conçu. Inscrivez-vous pour débloquer des avantages exclusifs.</p>
                 <p class="text-sm mt-10">Vous avez déjà un compte? <a href="{{ route('login') }}" class="text-blue-600 font-semibold hover:underline ml-1">Connectez-vous ici</a></p>
             </div>
-            <form class=" md:max-w-lg md:ml-auto w-full relative">
-                
+            <form method="POST" action="{{ route('signup.store') }}" class=" md:max-w-lg md:ml-auto w-full relative">
+                @csrf
                 <div class="mb-12">
                     <h3 class="text-3xl font-extrabold">S'inscrire</h3>
                 </div>
@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="mt-12">
-                    <button type="button" class="w-full py-2.5 px-8 text-sm font-semibold rounded text-white bg-blue-600  hover:bg-blue-700 focus:outline-none transition-all">
+                    <button type="submit" class="w-full py-2.5 px-8 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none transition-all">
                         S'inscrire
                     </button>
                 </div>
