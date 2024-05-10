@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Destinataire;
-use App\Models\Department;
 
 class DestinataireController extends Controller
 {
 
     public function index()
     {
-        $destinataires = Destinataire::with('department')->get();
+        $destinataires = Destinataire::with(['department', 'role'])->get();
 
 
         $formattedDestinataires = $destinataires->map(function ($destinataire) {
@@ -21,7 +20,7 @@ class DestinataireController extends Controller
                 'telephone' => $destinataire->telephone_dest,
                 'emails' => $destinataire->first_email . ', ' . $destinataire->second_email,
                 'department' => $destinataire->department->dept_name,
-                'role' => $destinataire->role_id,
+                'role' => $destinataire->role->name,
             ];
         });
 
