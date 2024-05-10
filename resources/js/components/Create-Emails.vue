@@ -30,7 +30,7 @@ const dateValueLimite = ref([]);
 const editor = useEditor({
   content: props.modelValue,
   onUpdate: ({ editor }) => {
-    // console.log(editor.getHTML())
+
     emit('update:modelValue', editor.getHTML())
   },
   extensions: [StarterKit, Underline],
@@ -46,6 +46,13 @@ const fileInput = ref(null);
 
 function handleButtonClick() {
   fileInput.value.click();
+}
+
+const showCCI = ref(false);
+
+
+function toggleCCI() {
+  showCCI.value = !showCCI.value;
 }
 
 </script>
@@ -102,13 +109,28 @@ function handleButtonClick() {
             <div class="h-16 flex items-center">
                 <h4 class="text-lg font-bold">New mail</h4>
             </div>
-            <div class="mb-6 pt-4">
-                <div>
-                    <input type="text" name="to" id="to" class="w-full py-2 px-3 border-b border-gray-300 focus:outline-none focus:ring-0 focus:border-transparent focus:border-b-gray-300 placeholder-gray-400" placeholder="To">
+
+            <div class="cont">
+
+
+                <div class="mb-2">
+
+                    <button @click="toggleCCI" class="buttons-container text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" id="cciButton">CCI</button>
+                  </div>
                 </div>
-                <div>
-                    <input type="text" name="cc" id="cc" class="w-full py-2 px-3 border-b border-gray-300 focus:outline-none focus:ring-0 focus:border-transparent focus:border-b-gray-300 placeholder-gray-400 mt-2" placeholder="Sujet">
-                </div>
+                  <div class="input-container">
+                    <input type="text" name="cc" id="cc" class="w-full py-2 px-3 border-b border-gray-300 focus:outline-none focus:ring-0 focus:border-transparent focus:border-b-gray-300 placeholder-gray-400 mt-2" placeholder="CC">
+                    <input v-if="showCCI" type="text" name="cci" id="cci" class="w-full py-2 px-3 border-b border-gray-300 focus:outline-none focus:ring-0 focus:border-transparent focus:border-b-gray-300 placeholder-gray-400 mt-2" placeholder="CCI">
+                  </div>
+                    <div>
+                        <input type="text" name="cc" id="cc" class="w-full py-2 px-3 border-b border-gray-300 focus:outline-none focus:ring-0 focus:border-transparent focus:border-b-gray-300 placeholder-gray-400 mt-2" placeholder="Sujet">
+                    </div>
+
+
+
+
+
+                <div class="mb-6 pt-4">
                 <div class="mt-4">
                     <section
                     v-if="editor"
@@ -254,10 +276,32 @@ function handleButtonClick() {
 
 <style scoped>
 .container {
-  margin-left: auto; /* Move the container to the right */
-  margin-right: auto; /* Center the container horizontally */
-  width: 70%; /* Set the width of the container */
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
 }
+
+.input-field {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+  }
+
+  .input-field:focus {
+    border-color: #ccc;
+
+  }
+  .cont {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttons-container {
+    margin-left: auto;
+}
+
 </style>
 
 
