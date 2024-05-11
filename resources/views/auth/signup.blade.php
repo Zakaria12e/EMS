@@ -10,11 +10,30 @@
 </head>
 
 <body>
+    @if(session('error'))
+    <div style="margin-top: 60px; " id="errorMessage" class="bg-red-100 text-red-800 fixed top-0 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded z-50">
+        <div class="inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-red-500 inline mr-4" viewBox="0 0 32 32">
+                <path d="M16 1a15 15 0 1 0 15 15A15 15 0 0 0 16 1zm6.36 20L21 22.36l-5-4.95-4.95 4.95L9.64 21l4.95-5-4.95-4.95 1.41-1.41L16 14.59l5-4.95 1.41 1.41-5 4.95z" data-original="#ea2d3f" />
+            </svg>
+            <strong class="font-bold text-base">Erreur!</strong>
+        </div>
+        <span class="block sm:inline text-sm mx-4 max-sm:ml-0 max-sm:mt-1">{{ session('error') }}</span>
+    </div>
+    <script>
+        setTimeout(function() {
+            var errorMessage = document.getElementById('errorMessage');
+            errorMessage.parentNode.removeChild(errorMessage);
+        }, 3000);
+    </script>
+    @endif
 
 
     <div class=" text-[#333] min-h-screen relative flex fle-col items-center justify-center py-6 px-4">
         <img src="https://readymadeui.com/bg-effect.svg" class="absolute inset-0 w-full h-full z-[-1]" />
+
         <div class="grid md:grid-cols-2 items-center gap-10 max-w-6xl w-full">
+
             <div>
                 <h2 class="lg:text-5xl text-4xl font-extrabold lg:leading-[55px]">
                     Inscription Transparente pour des Avantages Exclusifs
@@ -22,6 +41,7 @@
                 <p class="text-sm mt-6">Profitez d'un processus d'inscription fluide et sans effort avec notre formulaire d'inscription intuitivement conçu. Inscrivez-vous pour débloquer des avantages exclusifs.</p>
                 <p class="text-sm mt-10">Vous avez déjà un compte? <a href="{{ route('login') }}" class="text-blue-600 font-semibold hover:underline ml-1">Connectez-vous ici</a></p>
             </div>
+
             <form method="POST" action="{{ route('signup.store') }}" class=" md:max-w-lg md:ml-auto w-full relative">
                 @csrf
                 <div class="mb-12">

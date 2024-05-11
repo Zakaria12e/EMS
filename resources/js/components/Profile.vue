@@ -39,6 +39,8 @@ const deletePhoto = () => {
 const updatePhoto = () => {
   // Handle update action for user photo
 }
+
+
 </script>
 
 <template>
@@ -199,7 +201,9 @@ const updatePhoto = () => {
               </button>
             </div>
           </form>
+            
         </div>
+
       </div>
     </div>
 
@@ -229,6 +233,7 @@ const updatePhoto = () => {
                   </button>
                 </span>
               </div>
+
             </div>
 
             <!-- File Upload Section -->
@@ -292,6 +297,7 @@ const updatePhoto = () => {
               </button>
             </div>
           </form>
+
         </div>
       </div>
     </div>

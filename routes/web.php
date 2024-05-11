@@ -12,9 +12,10 @@ Route::get('/', function () {
 
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'postlogin'])->name('login');
+Route::post('/login', [AuthController::class, 'postlogin'])->name('postlogin');
 Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
 Route::post('/register', [AuthController::class, 'postsignup'])->name('signup.store');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/admin/{view?}', [ApplicationController::class, 'admin'])->where('view', '.*')->name('admin.pages');
 

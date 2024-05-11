@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -20,12 +21,12 @@ class AuthController extends Controller
     {
         $check_email = User::where('email', $request->email)->first();
         if($check_email){
-            return back()->with('error', 'Email already in use');
+            return back()->with('error', 'Email déjà utilisé !!');
         }
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:8',
         ]);
 
@@ -38,6 +39,32 @@ class AuthController extends Controller
 
 
         return redirect()->route('admin.pages');
+    }
+
+
+
+        public function postlogin(Request $request)
+    {
+
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+
+            return redirect()->route('admin.pages');
+        } else {
+
+            return redirect()->back()->with('error', 'Email ou mot de passe incorrect !!');
+        }
+    }
+
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
     }
 
 }
